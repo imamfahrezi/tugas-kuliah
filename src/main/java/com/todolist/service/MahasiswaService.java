@@ -8,11 +8,11 @@ public interface MahasiswaService {
 
   public void addMahasiswa(Mahasiswa mahasiswa);
 
-  public void deleteMahasiswa(Integer id);
+  public void deleteMahasiswa(String npm);
 
-  public Mahasiswa findMahasiswaById(Integer id);
+  public Mahasiswa findMahasiswaByNpm(String npm);
 
   public List<Mahasiswa> findAllMahasiswa();
 
-  public void updateMahasiswa(Integer id, String nama, Integer npm, String jurusan, Integer semester, Integer umur);
+  public void updateMahasiswa(String npm, Mahasiswa mahasiswa);
 }

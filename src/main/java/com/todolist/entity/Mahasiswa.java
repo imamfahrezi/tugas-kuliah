@@ -8,15 +8,15 @@ public class Mahasiswa {
 
   private Integer id;
   private String name;
-  private Integer npm;
+  private String npm;
   private String jurusan;
-  private Integer semester;
-  private Integer umur;
+  private String semester;
+  private String umur;
 
   public Mahasiswa() {
   }
 
-  public Mahasiswa(String name, Integer npm, String jurusan, Integer semester, Integer umur) {
+  public Mahasiswa(String name, String npm, String jurusan, String semester, String umur) {
     this.name = name;
     this.npm = npm;
     this.jurusan = jurusan;
@@ -24,7 +24,14 @@ public class Mahasiswa {
     this.umur = umur;
   }
 
-  public Mahasiswa(Integer id, String name, Integer npm, String jurusan, Integer semester, Integer umur) {
+  public Mahasiswa(String name, String jurusan, String semester, String umur) {
+    this.name = name;
+    this.jurusan = jurusan;
+    this.semester = semester;
+    this.umur = umur;
+  }
+
+  public Mahasiswa(Integer id, String name, String npm, String jurusan, String semester, String umur) {
     this.id = id;
     this.name = name;
     this.npm = npm;
@@ -49,11 +56,11 @@ public class Mahasiswa {
     this.name = name;
   }
 
-  public Integer getNpm() {
+  public String getNpm() {
     return npm;
   }
 
-  public void setNpm(Integer npm) {
+  public void setNpm(String npm) {
     this.npm = npm;
   }
 
@@ -65,19 +72,19 @@ public class Mahasiswa {
     this.jurusan = jurusan;
   }
 
-  public Integer getSemester() {
+  public String getSemester() {
     return semester;
   }
 
-  public void setSemester(Integer semester) {
+  public void setSemester(String semester) {
     this.semester = semester;
   }
 
-  public Integer getUmur() {
+  public String getUmur() {
     return umur;
   }
 
-  public void setUmur(Integer umur) {
+  public void setUmur(String umur) {
     this.umur = umur;
   }
 

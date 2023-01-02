@@ -31,23 +31,32 @@ public class RepositoryTest {
 
   @Test
   void testInsert() {
-    mahasiswaRepository.save(new Mahasiswa("Yazis", 202143580, "teknik informatika", 4, 22));
+    // mahasiswaRepository.save(new Mahasiswa("Yazis", "202143580", "teknik
+    // informatika", "4", "i"));
+    mahasiswaRepository.save(new Mahasiswa("diah", "20214358012", "teknik informatika", "4", "22"));
+    mahasiswaRepository.save(new Mahasiswa("imam", "20214358043", "teknik informatika", "2", "18"));
+    mahasiswaRepository.save(new Mahasiswa("wahyu", "2021435212", "teknik informatika", "1", "19"));
+    mahasiswaRepository.save(new Mahasiswa("tamam", "2021435806", "teknik informatika", "5", "21"));
+    mahasiswaRepository.save(new Mahasiswa("ardi", "20214358015", "teknik informatika", "5", "20"));
   }
 
   @Test
   void testDeleteById() {
-    mahasiswaRepository.deleteById(7);
+    mahasiswaRepository.deleteByNpm("202143580");
+    mahasiswaRepository.deleteByNpm("2021435212");
+    mahasiswaRepository.deleteByNpm("2021435806");
+    mahasiswaRepository.deleteByNpm("20214358015");
   }
 
   @Test
   void testFindById() {
-    Mahasiswa mahasiswa = mahasiswaRepository.findById(7);
+    Mahasiswa mahasiswa = mahasiswaRepository.findByNpm("7");
     System.out.println(mahasiswa);
   }
 
   @Test
   void testUpdate() {
-    mahasiswaService.updateMahasiswa(1, "ardi", 202142212, "teknik indurstri", 8, 18);
+    mahasiswaService.updateMahasiswa("20214358015", new Mahasiswa("imam", "teknik indurstri", "8", " 18"));
 
   }
 

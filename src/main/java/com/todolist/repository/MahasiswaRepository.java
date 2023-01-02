@@ -10,9 +10,9 @@ public interface MahasiswaRepository {
 
   public void save(Mahasiswa mahasiswa);
 
-  public void deleteById(Integer id);
+  public void deleteByNpm(String npm);
 
-  public Mahasiswa findById(Integer id);
+  public Mahasiswa findByNpm(String npm);
 
   public void update(Mahasiswa mahasiswa);
 

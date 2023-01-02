@@ -31,7 +31,7 @@ public class InputUtil {
     System.out.print("umur\t : ");
     String umur = scanner.nextLine();
 
-    return new Mahasiswa(nama, Integer.valueOf(npm), jurusan, Integer.valueOf(semester), Integer.valueOf(umur));
+    return new Mahasiswa(nama, npm, jurusan, semester, umur);
   }
 
   public static void main(String[] args) {

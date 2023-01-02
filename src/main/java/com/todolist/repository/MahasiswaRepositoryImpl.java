@@ -20,10 +20,10 @@ public class MahasiswaRepositoryImpl implements MahasiswaRepository {
         mList.add(new Mahasiswa(
             result.getInt("id"),
             result.getString("nama"),
-            result.getInt("npm"),
+            result.getString("npm"),
             result.getString("jurusan"),
-            result.getInt("semester"),
-            result.getInt("umur")));
+            result.getString("semester"),
+            result.getString("umur")));
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -36,10 +36,10 @@ public class MahasiswaRepositoryImpl implements MahasiswaRepository {
     String sql = "INSERT INTO mahasiswa(nama,npm,jurusan,semester,umur)VALUES(?,?,?,?,?)";
     try (PreparedStatement prepareStatement = ConnectionUtil.getConnection().prepareStatement(sql)) {
       prepareStatement.setString(1, mahasiswa.getName());
-      prepareStatement.setInt(2, mahasiswa.getNpm());
+      prepareStatement.setString(2, mahasiswa.getNpm());
       prepareStatement.setString(3, mahasiswa.getJurusan());
-      prepareStatement.setInt(4, mahasiswa.getSemester());
-      prepareStatement.setInt(5, mahasiswa.getUmur());
+      prepareStatement.setString(4, mahasiswa.getSemester());
+      prepareStatement.setString(5, mahasiswa.getUmur());
       prepareStatement.executeUpdate();
 
     } catch (SQLException e) {
@@ -48,12 +48,12 @@ public class MahasiswaRepositoryImpl implements MahasiswaRepository {
   }
 
   @Override
-  public void deleteById(Integer id) {
+  public void deleteByNpm(String npm) {
 
-    String sql = "DELETE FROM mahasiswa WHERE id=?";
+    String sql = "DELETE FROM mahasiswa WHERE npm=?";
 
     try (PreparedStatement prepareStatement = ConnectionUtil.getConnection().prepareStatement(sql)) {
-      prepareStatement.setInt(1, id);
+      prepareStatement.setString(1, npm);
       prepareStatement.executeUpdate();
 
     } catch (SQLException e) {
@@ -63,19 +63,19 @@ public class MahasiswaRepositoryImpl implements MahasiswaRepository {
   }
 
   @Override
-  public Mahasiswa findById(Integer id) {
-    String sql = "SELECT * FROM mahasiswa WHERE id=?";
+  public Mahasiswa findByNpm(String npm) {
+    String sql = "SELECT * FROM mahasiswa WHERE npm=?";
     try (PreparedStatement prepareStatement = ConnectionUtil.getConnection().prepareStatement(sql)) {
-      prepareStatement.setInt(1, id);
+      prepareStatement.setString(1, npm);
       ResultSet resultSet = prepareStatement.executeQuery();
       if (resultSet.next()) {
         return new Mahasiswa(
             resultSet.getInt("id"),
             resultSet.getString("nama"),
-            resultSet.getInt("npm"),
+            resultSet.getString("npm"),
             resultSet.getString("jurusan"),
-            resultSet.getInt("semester"),
-            resultSet.getInt("umur"));
+            resultSet.getString("semester"),
+            resultSet.getString("umur"));
       } else {
         return null;
       }
@@ -87,15 +87,14 @@ public class MahasiswaRepositoryImpl implements MahasiswaRepository {
 
   @Override
   public void update(Mahasiswa mahasiswa) {
-    String sql = "UPDATE mahasiswa SET nama=?,npm=?,jurusan=?,semester=?,umur=? WHERE id=?";
+    String sql = "UPDATE mahasiswa SET nama=?,jurusan=?,semester=?,umur=? WHERE npm=?";
     System.out.println(mahasiswa.getId());
     try (PreparedStatement prepareStatement = ConnectionUtil.getConnection().prepareStatement(sql)) {
       prepareStatement.setString(1, mahasiswa.getName());
-      prepareStatement.setInt(2, mahasiswa.getNpm());
-      prepareStatement.setString(3, mahasiswa.getJurusan());
-      prepareStatement.setInt(4, mahasiswa.getSemester());
-      prepareStatement.setInt(5, mahasiswa.getUmur());
-      prepareStatement.setInt(6, mahasiswa.getId());
+      prepareStatement.setString(2, mahasiswa.getJurusan());
+      prepareStatement.setString(3, mahasiswa.getSemester());
+      prepareStatement.setString(4, mahasiswa.getUmur());
+      prepareStatement.setString(5, mahasiswa.getNpm());
       prepareStatement.executeUpdate();
 
     } catch (SQLException e) {
